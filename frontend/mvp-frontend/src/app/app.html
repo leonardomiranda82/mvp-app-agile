@@ -1,4 +1,32 @@
-<!-- src/app/app.html -->
-<div style="text-align:center; padding: 50px; font-family: sans-serif;">
-  <h1>{{ message }}</h1>
+<div style="text-align:center; padding: 20px 50px; font-family: sans-serif;">
+  
+  <div style="margin-bottom: 40px;">
+    <h2>Salvar Nova Mensagem</h2>
+    <form (ngSubmit)="onSubmit()">
+      <input type="text" [(ngModel)]="newMessage" name="newMessage" placeholder="Digite sua mensagem" size="40">
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
+
+  <hr style="margin: 40px auto; width: 70%;">
+
+  <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <h2>Mensagens Salvas:</h2>
+
+    <div *ngFor="let msg of messages" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <p style="margin: 0;"><strong>ID:</strong> {{ msg.id }}</p>
+        <p style="margin: 5px 0 0 0;">{{ msg.text }}</p>
+      </div>
+      
+      <button (click)="deleteMessage(msg.id)" style="background-color: #f44336; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+        Apagar
+      </button>
+    </div>
+
+    <div *ngIf="messages.length === 0">
+      <p>Nenhuma mensagem salva ainda. Adicione uma acima!</p>
+    </div>
+  </div>
+
 </div>
