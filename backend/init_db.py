@@ -23,7 +23,7 @@ cur.execute('CREATE TABLE messages (id serial PRIMARY KEY,'
 print("Inserindo a mensagem inicial...")
 cur.execute('INSERT INTO messages (message_text)'
             'VALUES (%s)',
-            ('Helo World vindo do PostgreSQL!',))
+            ('Helo World escrito no PostgreSQL!',))
 
 # Salva as alterações no banco de dados
 conn.commit()
