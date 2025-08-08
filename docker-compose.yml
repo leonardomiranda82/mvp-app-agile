@@ -1,5 +1,5 @@
 services:
-  # Serviço 1: O Banco de Dados PostgreSQL
+  # Serviço 1: ostgreSQL
   db:
     image: postgres:14
     restart: always
@@ -11,8 +11,12 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+  
 
-  # Serviço 2: A nossa API Python
+  
+
+  # Serviço 2: Python
   api:
     build: ./backend  # Constrói a imagem a partir da pasta 'backend'
     ports:
